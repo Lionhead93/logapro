@@ -26,6 +26,10 @@ public class ItemService {
         return itemRepository.save(item);
     }
 
+    public Item getItem(Long id){
+        return itemRepository.findById(id).orElse(new Item());
+    }
+
     public void changeAppender() {
         log.info("before appender change....");
 

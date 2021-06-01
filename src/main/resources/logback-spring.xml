@@ -42,6 +42,9 @@
         </rollingPolicy>
     </appender>
 
+    <logger name="com.example.logapro.service.ItemService" level="info">
+        <appender-ref ref="DEFAULT" />
+    </logger>
     <!-- Root Logger -->
     <root level="info">
         <appender-ref ref="DEFAULT" />
