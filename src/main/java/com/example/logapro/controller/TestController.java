@@ -1,11 +1,12 @@
 package com.example.logapro.controller;
 
+import com.example.logapro.model.Item;
 import com.example.logapro.service.ItemService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class TestController {
@@ -17,4 +18,24 @@ public class TestController {
         return itemService.getItem(id).getName();
     }
 
+    @GetMapping("/hello")
+    public String hello() throws InterruptedException {
+        log.info("hello");
+        Thread.sleep(5000);
+        return "hello";
+    }
+
+    @GetMapping("/world")
+    public String world() throws InterruptedException {
+        log.info("world");
+        Thread.sleep(3000);
+        return "world";
+    }
+
+    @PostMapping("/body")
+    public String body(@RequestBody Item item) throws InterruptedException {
+        log.info(item.toString());
+        Thread.sleep(3000);
+        return "ok";
+    }
 }
